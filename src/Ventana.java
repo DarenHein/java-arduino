@@ -1,5 +1,7 @@
 import javax.swing.JFrame;
 
+import panamahitek.Arduino.PanamaHitek_Arduino;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,7 +15,15 @@ public class Ventana extends JFrame{
     private JLabel e; 
     private JButton b,b1; 
 
+    PanamaHitek_Arduino Arduino = new PanamaHitek_Arduino(); 
+
     public Ventana(){
+        
+        try {
+            Arduino.arduinoTX("COM#", 9600);
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
         this.setSize(ancho, largo);
         this.setLocationRelativeTo(null);
         this.setTitle("Arduino");
@@ -40,6 +50,13 @@ public class Ventana extends JFrame{
 
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                try {
+                    Arduino.sendData("k");
+                } catch (Exception e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
             
             }
             
@@ -53,6 +70,13 @@ public class Ventana extends JFrame{
 
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                try {
+                    Arduino.sendData("q");
+                } catch (Exception e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
                 
             }
             
