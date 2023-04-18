@@ -20,7 +20,7 @@ public class Ventana extends JFrame{
     public Ventana(){
         
         try {
-            Arduino.arduinoTX("COM#", 9600);
+            Arduino.arduinoTX("COM4", 9600);
         } catch (Exception e) {
             // TODO: handle exception
         }
